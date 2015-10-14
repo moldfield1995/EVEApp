@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<evec_api version="2.0" method="marketstat_xml">
+      <marketstat><type id="1230">
+          <buy><volume>861000000</volume><avg>15.32</avg><max>15.70</max><min>13.76</min><stddev>0.75</stddev><median>15.70</median><percentile>15.70</percentile></buy><sell><volume>87439572</volume><avg>19.93</avg><max>57.00</max><min>15.87</min><stddev>7.86</stddev><median>19.95</median><percentile>16.86</percentile></sell>
+          
+          <all><volume>958069319</volume><avg>15.58</avg><max>29.90</max><min>1.02</min><stddev>4.41</stddev><median>15.79</median><percentile>12.43</percentile></all>
+        </type></marketstat>
+    </evec_api>
