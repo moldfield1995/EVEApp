@@ -7,6 +7,7 @@ public class ListManagment extends DefaultListModel<ListItems> {
 		super();
 
 		super.addElement(new ListItems(new int[]{1230},new int[]{100},new int[]{34}, new int[]{435},"veldspar" ));
+		super.addElement(new ListItems(new int[]{17471},new int[]{100},new int[]{34}, new int[]{435},"Dense Veldspar" ));
 	}
 	
 

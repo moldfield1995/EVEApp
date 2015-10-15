@@ -78,7 +78,7 @@ public ArrayList<ItemMarketData> pullRead(String[] inputs, String systemID)
 		stringUrl += systemlimitString + sID;
 		for(int i = 0; i < inputs.length ; i++){
 			stringUrl += typeString + inputs[i];
-			fileLocation += "," + inputs[i];
+			//fileLocation += "," + inputs[i];
 		}
 		fileLocation += ".xml";
 		URL marketUrl = new URL(stringUrl);

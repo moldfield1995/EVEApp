@@ -41,6 +41,15 @@ public ItemMarketData getItem(int currentId)
 		else
 			return null;
 	}
+	
+	if(sortedList.get(0).getID() > currentId)
+	{
+		return null;
+	}
+	if(sortedList.get(sortedList.size() - 1).getID() < currentId)
+	{
+		return null;
+	}
 	int lastIndex = 0;
 	int tests = 0;
 	int maxSize = sortedList.size() - 1;

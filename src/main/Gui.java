@@ -36,6 +36,8 @@ import javax.swing.JScrollPane;
 import javax.swing.AbstractListModel;
 
 import listHanderler.ListManagment;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 
 public class Gui {
@@ -48,6 +50,7 @@ public class Gui {
 	private JScrollPane ComponetScrollPane;
 	private JScrollPane ResultsScrollPane;
 	private JTable ResultsTable;
+	private JLabel ProfitLossAmount;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,21 +84,7 @@ public class Gui {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				events.Update(list.getSelectedIndex(), true);
-				
-//				ArrayList<ItemMarketData> imdArray = events.getArray();
-//				DefaultTableModel dTM = (DefaultTableModel) mainTable.getModel();
-//				for (int y = 1; y-1<imdArray.size(); y++){
-//					if(y > mainTable.getRowCount()-1){
-//					dTM.addRow(new Object[]{null, null, null, null, null});
-//					mainTable.setModel(dTM);
-//					}
-//					mainTable.setValueAt(events.getItem(33+y).getID(), y, 0);
-//					for(int x = 1; x<mainTable.getColumnCount(); x++){
-//						mainTable.setValueAt(events.getItem(33+y).GetAtribute(0, x-1), y, x);
-//					}
-//					
-//					
-//				}
+				ProfitLossAmount.setText(events.getProfitLoss() + "");
 			}
 		});
 		btnNewButton.setBounds(10, 201, 89, 29);
@@ -119,7 +108,6 @@ public class Gui {
 		ComponetTable.setFillsViewportHeight(true);
 		ComponetTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
 			},
 			new String[] {
 				"Item", "Item Price", "Amount", "Total Price"
@@ -130,12 +118,6 @@ public class Gui {
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
 			}
 		} );
 		ComponetTable.getColumnModel().getColumn(1).setPreferredWidth(70);
@@ -149,7 +131,6 @@ public class Gui {
 		ResultsTable = new JTable();
 		ResultsTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
 			},
 			new String[] {
 				"Items", "Item Price", "Amount", "Total Price"
@@ -161,14 +142,19 @@ public class Gui {
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
 		ResultsScrollPane.setViewportView(ResultsTable);
-		events.setDTM((DefaultTableModel) ComponetTable.getModel());
+		
+		JLabel lblProfitloss = new JLabel("Profit/Loss:");
+		lblProfitloss.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblProfitloss.setBounds(185, 329, 75, 17);
+		mainFrame.getContentPane().add(lblProfitloss);
+		
+		ProfitLossAmount = new JLabel("0.00");
+		ProfitLossAmount.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		ProfitLossAmount.setBounds(265, 329, 46, 14);
+		mainFrame.getContentPane().add(ProfitLossAmount);
+		events.setComDTM((DefaultTableModel) ComponetTable.getModel());
+		events.setResDTM((DefaultTableModel) ResultsTable.getModel());
 	}
 }
