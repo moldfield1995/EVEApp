@@ -152,7 +152,7 @@ public class Gui {
 		
 		ProfitLossAmount = new JLabel("0.00");
 		ProfitLossAmount.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		ProfitLossAmount.setBounds(265, 329, 46, 14);
+		ProfitLossAmount.setBounds(265, 329, 151, 14);
 		mainFrame.getContentPane().add(ProfitLossAmount);
 		events.setComDTM((DefaultTableModel) ComponetTable.getModel());
 		events.setResDTM((DefaultTableModel) ResultsTable.getModel());
