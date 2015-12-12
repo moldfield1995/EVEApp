@@ -6,38 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-
-
-
-import dataHanderler.XmlHanderler;
-import itemManagement.ItemHanderler;
-import itemManagement.ItemMarketData;
-
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-
-
 import java.awt.Color;
-
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
-import java.awt.Dimension;
-import java.awt.Component;
-import java.awt.Rectangle;
-
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.AbstractListModel;
-
-import listHanderler.ListManagment;
-import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JCheckBox;
 
 
 public class Gui {
@@ -51,6 +28,7 @@ public class Gui {
 	private JScrollPane ResultsScrollPane;
 	private JTable ResultsTable;
 	private JLabel ProfitLossAmount;
+	private JCheckBox buyCheckBox;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,6 +45,7 @@ public class Gui {
 
 
 	public Gui() {
+		//initialize event handerler before GUI to ensutre no nullptr's
 		events = new EventHanderler();
 		initialize();
 	}
@@ -79,12 +58,14 @@ public class Gui {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Update");
+		//Anonymous event handerler for the update button
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				events.Update(list.getSelectedIndex(), true);
+				events.Update(list.getSelectedIndex(), buyCheckBox.isSelected());
 				ProfitLossAmount.setText(events.getProfitLoss() + "");
+			
 			}
 		});
 		btnNewButton.setBounds(10, 201, 89, 29);
@@ -154,6 +135,10 @@ public class Gui {
 		ProfitLossAmount.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		ProfitLossAmount.setBounds(265, 329, 151, 14);
 		mainFrame.getContentPane().add(ProfitLossAmount);
+		
+		buyCheckBox = new JCheckBox("At buy price");
+		buyCheckBox.setBounds(10, 251, 97, 23);
+		mainFrame.getContentPane().add(buyCheckBox);
 		events.setComDTM((DefaultTableModel) ComponetTable.getModel());
 		events.setResDTM((DefaultTableModel) ResultsTable.getModel());
 	}

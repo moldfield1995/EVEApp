@@ -6,7 +6,18 @@ import javax.swing.DefaultListModel;
 public class ListManagment extends DefaultListModel<ListItems> {
 	public ListManagment(){
 		super();
+		LoadLongList();
 
+	}
+	
+
+	public void addElement(int[] componets,int[] cAmount, int[] results, int[]rAmount, String name)
+	{
+		super.addElement(new ListItems(componets, cAmount, results, rAmount, name));
+	}
+	
+	private void LoadLongList()
+	{
 		super.addElement(new ListItems(new int[]{1230},new int[]{100},new int[]{34}, new int[]{415},"Veldspar" ));
 		super.addElement(new ListItems(new int[]{17470},new int[]{100},new int[]{34}, new int[]{436},"Concentrated Veldspar" ));
 		super.addElement(new ListItems(new int[]{17471},new int[]{100},new int[]{34}, new int[]{457},"Dense Veldspar" ));
@@ -34,17 +45,15 @@ public class ListManagment extends DefaultListModel<ListItems> {
 		super.addElement(new ListItems(new int[]{21},new int[]{100},new int[]{35,37,38,39}, new int[]{1100,200,100,19},"Hedbergite" ));
 		super.addElement(new ListItems(new int[]{17440},new int[]{100},new int[]{35,37,38,39}, new int[]{1155,210,105,20},"Vitric Hedbergite" ));
 		super.addElement(new ListItems(new int[]{17441},new int[]{100},new int[]{35,37,38,39}, new int[]{1270,220,110,21},"Glazed Hedbergite" ));
-		
-		
-		
-		
-		
-	}
-	
-
-	public void addElement(int[] componets,int[] cAmount, int[] results, int[]rAmount, String name)
-	{
-		super.addElement(new ListItems(componets, cAmount, results, rAmount, name));
+		super.addElement(new ListItems(new int[]{1229},new int[]{100},new int[]{35,36,37}, new int[]{2200,2400,300},"Gneiss" ));
+		super.addElement(new ListItems(new int[]{17865},new int[]{100},new int[]{35,36,37}, new int[]{2310,2520,315},"Iridescent Gneiss" ));
+		super.addElement(new ListItems(new int[]{17866},new int[]{100},new int[]{35,36,37}, new int[]{2420,2640,330},"Prismatic Gneiss" ));
+		super.addElement(new ListItems(new int[]{1232},new int[]{100},new int[]{34,36,37}, new int[]{10000,1600,120},"Dark Ochre" ));
+		super.addElement(new ListItems(new int[]{17436},new int[]{100},new int[]{34,36,37}, new int[]{10500,1680,126},"Onyx Ochre" ));
+		super.addElement(new ListItems(new int[]{17437},new int[]{100},new int[]{34,36,37}, new int[]{11000,1760,132},"Obsidian Ochre" ));
+		super.addElement(new ListItems(new int[]{19},new int[]{100},new int[]{34,35,36,37}, new int[]{56000,12050,2100,450},"Spodumain" ));
+		super.addElement(new ListItems(new int[]{17466},new int[]{100},new int[]{34,35,36,37}, new int[]{58800,12652,2205,472},"Bright Spodumain" ));
+		super.addElement(new ListItems(new int[]{17467},new int[]{100},new int[]{34,35,36,37}, new int[]{61600,13255,2310,495},"Gleaming Spodumain" ));
 	}
 	
 	

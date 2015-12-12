@@ -29,7 +29,7 @@ public class EventHanderler {
 	profitLoss = new BigDecimal(0.00);
 }
 	//take the input and dose pulls if required
-	public void Update(int listID, boolean sell)
+	public void Update(int listID, boolean buy)
 	{
 		if(listID<0)
 		{
@@ -71,60 +71,34 @@ public class EventHanderler {
 		}
 		if(pullArray.length > 0)
 			dataHanderler.addItem(xmlHanderler.pullRead(pullArray, null));
-		//array lists and such.
-		
-		
-		if(sell){
-			for (int i = 0 ; i < componets.length; i++) {
-				ItemMarketData imd = dataHanderler.getItem(componets[i]);
-				String[] table = new String[5];
-				table[0] = ""+imd.getID();
-				table[1] = imd.GetAtribute(1, 3).toString();
-				table[2] =""+componetsAmount[i];
-				table[3] = "" + (imd.GetAtribute(1, 3).multiply( new BigDecimal(componetsAmount[i])));
-				profitLoss = profitLoss.subtract(new BigDecimal(table[3]));
-				componetDTM.addRow(table);
-			}
-			
-			for (int i = 0 ; i < resutls.length; i++) {
-				ItemMarketData imd = dataHanderler.getItem(resutls[i]);
-				String[] table = new String[5];
-				table[0] = ""+imd.getID();
-				table[1] = imd.GetAtribute(1, 3).toString();
-				table[2] =""+resultsAmount[i];
-				table[3] = "" + (imd.GetAtribute(1, 3).multiply( new BigDecimal(resultsAmount[i])));
-				profitLoss = profitLoss.add(new BigDecimal(table[3]));
-				resultsDTM.addRow(table);
-			}
-		}
+		//tests if we are getting the buy or sell price
+		int buyOrSell;
+		if(buy)
+			buyOrSell = 0;
 		else
-		{
-			for (int i = 0 ; i < componets.length; i++) {
-				ItemMarketData imd = dataHanderler.getItem(componets[i]);
-				String[] table = new String[5];
-				table[0] = ""+imd.getID();
-				table[1] = imd.GetAtribute(0, 3).toString();
-				table[2] =""+componetsAmount[i];
-				table[3] = "" + (imd.GetAtribute(0, 3).multiply( new BigDecimal(componetsAmount[i])));
-				profitLoss.subtract(new BigDecimal(table[3]));
-				componetDTM.addRow(table);
-			}
-			for (int i = 0 ; i < resutls.length; i++) {
-				ItemMarketData imd = dataHanderler.getItem(resutls[i]);
-				String[] table = new String[5];
-				table[0] = ""+imd.getID();
-				table[1] = imd.GetAtribute(0, 3).toString();
-				table[2] =""+resultsAmount[i];
-				table[3] = "" + (imd.GetAtribute(0, 3).multiply( new BigDecimal(resultsAmount[i])));
-				profitLoss.add(new BigDecimal(table[3]));
-				resultsDTM.addRow(table);
-			}
+			buyOrSell = 1;
+		
+		for (int i = 0 ; i < componets.length; i++) {
+			ItemMarketData imd = dataHanderler.getItem(componets[i]);
+			String[] table = new String[5];
+			table[0] = ""+imd.getID();
+			table[1] = imd.GetAtribute(buyOrSell, 3).toString();
+			table[2] =""+componetsAmount[i];
+			table[3] = "" + (imd.GetAtribute(buyOrSell, 3).multiply( new BigDecimal(componetsAmount[i])));
+			profitLoss = profitLoss.subtract(new BigDecimal(table[3]));
+			componetDTM.addRow(table);
 		}
 		
-//		String[] array = {"34","35","36"};
-//		
-//		ArrayList<ItemMarketData> imdArray = xmlHanderler.pullRead(array, "30000142");
-//		dataHanderler.addItem(imdArray);
+		for (int i = 0 ; i < resutls.length; i++) {
+			ItemMarketData imd = dataHanderler.getItem(resutls[i]);
+			String[] table = new String[5];
+			table[0] = ""+imd.getID();
+			table[1] = imd.GetAtribute(buyOrSell, 3).toString();
+			table[2] =""+resultsAmount[i];
+			table[3] = "" + (imd.GetAtribute(buyOrSell, 3).multiply( new BigDecimal(resultsAmount[i])));
+			profitLoss = profitLoss.add(new BigDecimal(table[3]));
+			resultsDTM.addRow(table);
+		}
 		
 	}
 	

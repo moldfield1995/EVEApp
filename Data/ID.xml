@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <evec_api version="2.0" method="marketstat_xml">
-      <marketstat><type id="1230">
-          <buy><volume>795481518</volume><avg>16.39</avg><max>18.53</max><min>12.85</min><stddev>1.56</stddev><median>15.60</median><percentile>18.53</percentile></buy>
-          <sell><volume>4465785</volume><avg>22.18</avg><max>319999.90</max><min>21.84</min><stddev>127991.09</stddev><median>21.85</median><percentile>21.84</percentile></sell>
-          <all><volume>809947302</volume><avg>16.23</avg><max>23.00</max><min>1.01</min><stddev>4.14</stddev><median>15.89</median><percentile>10.88</percentile></all>
-        </type><type id="34">
-          <buy><volume>16728146811</volume><avg>5.41</avg><max>6.02</max><min>2.00</min><stddev>0.93</stddev><median>5.40</median><percentile>6.02</percentile></buy>
-          <sell><volume>18852147537</volume><avg>6.35</avg><max>11.55</max><min>6.11</min><stddev>1.01</stddev><median>6.32</median><percentile>6.14</percentile></sell>
-          <all><volume>35580294348</volume><avg>5.91</avg><max>11.55</max><min>2.00</min><stddev>1.21</stddev><median>6.16</median><percentile>3.81</percentile></all>
+      <marketstat><type id="1228">
+          <buy><volume>104068474</volume><avg>26.25</avg><max>27.14</max><min>25.00</min><stddev>0.76</stddev><median>26.56</median><percentile>27.14</percentile></buy>
+          <sell><volume>6615345</volume><avg>32.82</avg><max>37.30</max><min>28.50</min><stddev>2.32</stddev><median>34.92</median><percentile>29.47</percentile></sell>
+          <all><volume>120683819</volume><avg>24.52</avg><max>37.30</max><min>1.02</min><stddev>5.98</stddev><median>26.61</median><percentile>1.02</percentile></all>
+        </type><type id="35">
+          <buy><volume>1796823895</volume><avg>10.32</avg><max>10.99</max><min>5.01</min><stddev>1.87</stddev><median>10.63</median><percentile>10.99</percentile></buy>
+          <sell><volume>7811208319</volume><avg>12.68</avg><max>22.32</max><min>11.28</min><stddev>2.21</stddev><median>11.75</median><percentile>11.35</percentile></sell>
+          <all><volume>9608032214</volume><avg>12.24</avg><max>22.32</max><min>5.01</min><stddev>2.57</stddev><median>11.75</median><percentile>9.42</percentile></all>
         </type></marketstat>
     </evec_api>
