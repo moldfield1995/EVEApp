@@ -16,7 +16,12 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 
-
+/**
+ * Main Class, sets up the GUI and the event handerler.
+ * @author Matthew Oldfield
+ * @version 0.5
+ * 
+ */
 public class Gui {
 
 	private JFrame mainFrame;
@@ -51,6 +56,7 @@ public class Gui {
 	}
 
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		mainFrame = new JFrame();
 		mainFrame.getContentPane().setBackground(Color.WHITE);
@@ -61,8 +67,9 @@ public class Gui {
 		JButton btnNewButton = new JButton("Update");
 		//Anonymous event handerler for the update button
 		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
+			@Override 
 			public void mouseClicked(MouseEvent arg0) {
+				//Update the event handerler passing the item selected
 				events.Update(list.getSelectedIndex(), buyCheckBox.isSelected());
 				ProfitLossAmount.setText(events.getProfitLoss() + "");
 			
@@ -70,14 +77,14 @@ public class Gui {
 		});
 		btnNewButton.setBounds(10, 201, 89, 29);
 		mainFrame.getContentPane().add(btnNewButton);
-		
+		//The List of the ore types
 		JScrollPane ListScrollPane = new JScrollPane();
 		ListScrollPane.setBounds(10, 26, 151, 148);
 		mainFrame.getContentPane().add(ListScrollPane);
 		list = new JList();
 		list.setModel(events.getList());
 		ListScrollPane.setViewportView(list);
-		
+		//Top JTable, Input
 		ComponetScrollPane = new JScrollPane();
 		ComponetScrollPane.setBounds(185, 27, 403, 161);
 		mainFrame.getContentPane().add(ComponetScrollPane);
@@ -104,7 +111,7 @@ public class Gui {
 		ComponetTable.getColumnModel().getColumn(1).setPreferredWidth(70);
 		ComponetTable.getColumnModel().getColumn(2).setPreferredWidth(99);
 		tableDefault = ComponetTable;
-		
+		//Botem JTable, Output
 		ResultsScrollPane = new JScrollPane();
 		ResultsScrollPane.setBounds(185, 201, 403, 117);
 		mainFrame.getContentPane().add(ResultsScrollPane);
@@ -125,7 +132,7 @@ public class Gui {
 			}
 		});
 		ResultsScrollPane.setViewportView(ResultsTable);
-		
+		//Profit Loss Text
 		JLabel lblProfitloss = new JLabel("Profit/Loss:");
 		lblProfitloss.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblProfitloss.setBounds(185, 329, 75, 17);
@@ -135,10 +142,11 @@ public class Gui {
 		ProfitLossAmount.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		ProfitLossAmount.setBounds(265, 329, 151, 14);
 		mainFrame.getContentPane().add(ProfitLossAmount);
-		
+		//TickBox for using buy or sell market (Best case or worse case)
 		buyCheckBox = new JCheckBox("At buy price");
 		buyCheckBox.setBounds(10, 251, 97, 23);
 		mainFrame.getContentPane().add(buyCheckBox);
+		//Set up the refences of the Tables default model
 		events.setComDTM((DefaultTableModel) ComponetTable.getModel());
 		events.setResDTM((DefaultTableModel) ResultsTable.getModel());
 	}

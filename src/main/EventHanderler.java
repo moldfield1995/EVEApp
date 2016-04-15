@@ -13,7 +13,12 @@ import javax.swing.table.DefaultTableModel;
 
 import listHanderler.ListItems;
 import listHanderler.ListManagment;
-
+/**
+ * This class is the entry point for the GUI. It dose all the process and then updates the values of the GUI
+ * @author Matthew Oldfield
+ * @version 1.0
+ *
+ */
 public class EventHanderler {
 	private XmlHanderler xmlHanderler;
 	private ItemHanderler dataHanderler;
@@ -35,11 +40,12 @@ public class EventHanderler {
 		{
 			return;
 		}
+		//Rest the tables if needed
 		if(componetDTM.getRowCount() >0)
 		{
 			clearTables();
 		}
-		//get Items and format it for pulling
+		//Get Items and format it for pulling
 		ListItems items = listManagment.getElementAt(listID);
 		int[] componets = items.getComponets();
 		int[] componetsAmount = items.getComponetsAmounts();
@@ -47,7 +53,7 @@ public class EventHanderler {
 		int[] resutls = items.getResults();
 		int[] resultsAmount = items.getResultsAmounts();
 		length = length + resutls.length;
-		int[] pullsNeeded = new int[length];
+		int[] pullsNeeded = new int[length]; //Needs looking in to
 		int ittorate = 0;
 		
 		for (int j : componets) { 
@@ -64,6 +70,7 @@ public class EventHanderler {
 				ittorate++;
 			}
 		}
+		
 		String[] pullArray = new String[ittorate];
 		for (int a = 0; a < ittorate; a++)
 		{
@@ -71,7 +78,7 @@ public class EventHanderler {
 		}
 		if(pullArray.length > 0)
 			dataHanderler.addItem(xmlHanderler.pullRead(pullArray, null));
-		//tests if we are getting the buy or sell price
+		//Tests if we are getting the buy or sell price
 		int buyOrSell;
 		if(buy)
 			buyOrSell = 0;

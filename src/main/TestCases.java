@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dataHanderler.XmlHanderler;
-
+//Needs to be evaluated and re done, extra test needed and Time evaluation needed.
 public class TestCases {
 
 	private XmlHanderler xmlHandle;
@@ -25,20 +25,8 @@ public class TestCases {
 
 	}
 
-	@Test
-	public void test() {
-		if(fullTest)
-		{
-			test1();
-			for (int i = 0; i <= 1000; i++)
-			{
-				test2();
-			}
-		}
-		test3();
-	}
 
-
+@Test
 	private void test1()
 	{
 		fileLocation = "marketstat.xml";
@@ -83,7 +71,7 @@ public class TestCases {
 		}
 		System.out.println("test 1 was exicuted without problems");
 	}
-
+	@Test
 	private void test2()
 	{
 		ArrayList<ItemMarketData> imdArray=  new ArrayList<ItemMarketData>();
@@ -112,7 +100,7 @@ public class TestCases {
 		System.out.println("Passed");
 	}
 
-	
+	@Test
 	private void test3()
 	{
 		xmlHandle = new XmlHanderler();

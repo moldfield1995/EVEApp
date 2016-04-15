@@ -57,7 +57,7 @@ public ArrayList<ItemMarketData> localRead(String fileLocation)
 }
 
 
-//@inputs pre-parsed
+
 public ArrayList<ItemMarketData> pullRead(String[] inputs, String systemID) 
 {
 	//pulling from eveCentral
@@ -65,7 +65,7 @@ public ArrayList<ItemMarketData> pullRead(String[] inputs, String systemID)
 	if(systemID != null)
 	{
 		if(systemID.compareTo("") != 0)
-		sID = systemID;
+			sID = systemID;
 	}
 	
 	String stringUrl = "";

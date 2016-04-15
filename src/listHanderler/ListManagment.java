@@ -1,7 +1,7 @@
 package listHanderler;
 
 import javax.swing.DefaultListModel;
-
+//current Hard coded List for the Ores. will be looking in to a file storage system.
 @SuppressWarnings("serial")
 public class ListManagment extends DefaultListModel<ListItems> {
 	public ListManagment(){
