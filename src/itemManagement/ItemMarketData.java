@@ -72,14 +72,14 @@ public BigDecimal[] GetArray(int id)
 }
 
 public String toString(){
-	String s = null;
+	String s;
 	if (nullClass)
 	 s = "Null"; 
 	else
 	{
-		//s = "ID:" + Integer.toString(typeId) + ",B1:" + BigDecimal.toString(buyArray[0])+ ",B2:" + BigDecimal.toString(buyArray[1])+
-		//		",B3:" + BigDecimal.toString(buyArray[2])+ ",B4:" + BigDecimal.toString(buyArray[3])+ ",S1:" + BigDecimal.toString(sellArray[0])
-		//		+ ",S2:" + BigDecimal.toString(sellArray[1])+ ",S3:" + BigDecimal.toString(sellArray[2])+ ",S4:" + BigDecimal.toString(sellArray[3]);
+		s = "ID:" + Integer.toString(typeId) + ",B1:" + buyArray[0].toString()+ ",B2:" + buyArray[1].toString()+
+				",B3:" + buyArray[2].toString() + ",B4:" + buyArray[3].toString()+ ",S1:" + sellArray[0].toString()
+				+ ",S2:" + sellArray[1].toString()+ ",S3:" + sellArray[2].toString()+ ",S4:" + sellArray[3].toString();
 	}
 	
 	
