@@ -1,7 +1,11 @@
 package itemManagement;
 
 import java.util.Comparator;
-
+/**
+ * Needs testing may be more optimal for sorting.
+ * @author Matthew Oldfield
+ *
+ */
 public class CustomCompairor implements Comparator<ItemMarketData> {
 
 	@Override

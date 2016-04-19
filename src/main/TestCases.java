@@ -75,11 +75,10 @@ public class TestCases {
 	private void test2()
 	{
 		ArrayList<ItemMarketData> imdArray=  new ArrayList<ItemMarketData>();
+		Random r = new Random();
 		for (int i = 0; i <10; i++)
 		{
-			Random r = new Random();
 			imdArray.add(new ItemMarketData(r.nextInt(2000),null,null));
-			System.out.println(imdArray.get(i).getID() + "");
 		}
 		ItemHanderler dH = new ItemHanderler();
 		dH.addItem(imdArray);
@@ -131,6 +130,18 @@ public class TestCases {
 		else
 		{
 			fail("read check = false");
+		}
+	}
+	@Test
+	private void test3()
+	{
+		
+		ItemHanderler array = new ItemHanderler();
+		ArrayList<ItemMarketData> imdArray=  new ArrayList<ItemMarketData>();
+		Random r = new Random();
+		for (int i = 0; i <1000; i++)
+		{
+			imdArray.add(new ItemMarketData(r.nextInt(200000),null,null));
 		}
 	}
 	

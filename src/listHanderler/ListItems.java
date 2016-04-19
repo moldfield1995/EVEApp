@@ -1,8 +1,15 @@
 package listHanderler;
 
-
-
 public class ListItems {
+	class CraftingComponet{
+		public int itemID;
+		public int amount;
+		public CraftingComponet(int _itemID, int _amount) {
+			itemID = _itemID;
+			amount = _amount;
+		}
+	}
+	
 	private String listName;
 	private int[] componetsList;
 	private int[] componetsAmount;

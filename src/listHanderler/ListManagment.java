@@ -1,6 +1,8 @@
 package listHanderler;
 
 import javax.swing.DefaultListModel;
+
+import listHanderler.ListItems.CraftingComponet;
 //current Hard coded List for the Ores. will be looking in to a file storage system.
 @SuppressWarnings("serial")
 public class ListManagment extends DefaultListModel<ListItems> {
@@ -17,7 +19,7 @@ public class ListManagment extends DefaultListModel<ListItems> {
 	}
 	
 	private void LoadLongList()
-	{
+	{	
 		super.addElement(new ListItems(new int[]{1230},new int[]{100},new int[]{34}, new int[]{415},"Veldspar" ));
 		super.addElement(new ListItems(new int[]{17470},new int[]{100},new int[]{34}, new int[]{436},"Concentrated Veldspar" ));
 		super.addElement(new ListItems(new int[]{17471},new int[]{100},new int[]{34}, new int[]{457},"Dense Veldspar" ));
