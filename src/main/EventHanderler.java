@@ -9,8 +9,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import bugHanderling.XmlPaserExseption;
 import listHanderler.ListItems;
 import listHanderler.ListManagment;
 
@@ -37,7 +39,12 @@ public class EventHanderler {
 		profitLoss = new BigDecimal(0.00);
 	}
 
-	// take the input and dose pulls if required
+	/**
+	 * Takes the users selected item from the list and gets all the data needed.
+	 * It then dose all the calculations for the table and sets up the table and fills it with data.
+	 * @param listID ID of the current list Item that is being used
+	 * @param buy if True returns worse case False returns best case
+	 */
 	public void Update(int listID, boolean buy) {
 		if (listID < 0) {
 			return;
@@ -70,7 +77,11 @@ public class EventHanderler {
 				pullArray[a] = "" + pullsNeeded.get(a);
 			}
 			pullsNeeded = null;
-			dataHanderler.addItem(xmlHanderler.pullRead(pullArray, null));
+			try {
+				dataHanderler.addItem(xmlHanderler.pullRead(pullArray, null));
+			} catch (XmlPaserExseption e) {
+				JOptionPane.showMessageDialog(null, "Error occered during data retrival. please try again", "Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		// Tests if we are getting the buy or sell price
 		int buyOrSell;
@@ -89,6 +100,10 @@ public class EventHanderler {
 			profitLoss = profitLoss.subtract(new BigDecimal(table[3]));
 			componetDTM.addRow(table);
 		}
+		if (buy)
+			buyOrSell = 1;
+		else
+			buyOrSell = 0;
 		for (int i = 0; i < resutls.length; i++) {
 			ItemMarketData imd = dataHanderler.getItem(resutls[i]);
 			String[] table = new String[5];
@@ -101,13 +116,15 @@ public class EventHanderler {
 		}
 
 	}
-
+	/**
+	 * Clears all the data in the tables and sets the profitloss text to 0.
+	 */
 	private void clearTables() {
 		componetDTM.setRowCount(0);
 		resultsDTM.setRowCount(0);
 		profitLoss = BigDecimal.ZERO;
 	}
-
+/*
 	public ArrayList<ItemMarketData> getArray() {
 		return dataHanderler.getArray();
 	}
@@ -115,31 +132,48 @@ public class EventHanderler {
 	public ItemMarketData getItem(int i) {
 		return dataHanderler.getItem(i);
 	}
-
+//*/
+	/**
+	 * Gets the current list that is being used
+	 * @return The current list
+	 */
 	public ListManagment getList() {
 		return listManagment;
 	}
-
+	/**
+	 * Sets up the reference for the component table
+	 * @param dtm
+	 */
 	public void setComDTM(DefaultTableModel dtm) {
 		this.componetDTM = dtm;
 	}
-
+	/**
+	 * Sets up the reference for the component table
+	 * @param dtm
+	 */
 	public void setResDTM(DefaultTableModel dtm) {
 		this.resultsDTM = dtm;
 	}
-
+	/**
+	 * Returns a reference for the component table
+	 * @return
+	 */
 	public DefaultTableModel getComDTM() {
 		return componetDTM;
 	}
-
+	/**
+	 * Returns a reference for the component table
+	 * @return
+	 */
 	public DefaultTableModel getResDTM() {
 		return resultsDTM;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public BigDecimal getProfitLoss() {
 		return profitLoss;
 	}
 
 }
-// calls pulls and updates database with everything that the Gui needs and then
-// passes it to the GUI

@@ -11,7 +11,11 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.management.modelmbean.XMLParseException;
+
 import org.w3c.dom.Document;
+
+import bugHanderling.XmlPaserExseption;
 
 public class XmlHanderler {
 private XmlReader xmlReader;
@@ -27,7 +31,7 @@ public XmlHanderler()
 	readCheck = true;
 }
 
-public ArrayList<ItemMarketData> localRead(String fileLocation)
+public ArrayList<ItemMarketData> localRead(String fileLocation) throws XmlPaserExseption
 {
 	ArrayList<ItemMarketData> IMDArray = new ArrayList<ItemMarketData>();
 	if (!readCheck)
@@ -36,29 +40,18 @@ public ArrayList<ItemMarketData> localRead(String fileLocation)
 		System.out.println("Read check = false");
 	}
 	readCheck = false;
-	try
-	{
 	orignalFile = new File(fileLocation);
 	lastDock = xmlReader.parsexmlFile(orignalFile);
 	IMDArray = xmlReader.GetItemArrays(lastDock);
 	readCheck = true;
 	orignalFile = null;
 	lastDock = null;
-	}
-	catch(Exception e)
-	{
-		e.printStackTrace();
-		System.out.println("Exception in XmlHanderler");
-		System.out.println(e.getMessage());
-		System.out.println("this was caused by");
-		System.out.println(e.getCause().getMessage());
-	}
 	return IMDArray;
 }
 
 
 
-public ArrayList<ItemMarketData> pullRead(String[] inputs, String systemID) 
+public ArrayList<ItemMarketData> pullRead(String[] inputs, String systemID) throws XmlPaserExseption 
 {
 	//pulling from eveCentral
 	String sID = "30000142";
